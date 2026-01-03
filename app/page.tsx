@@ -1,11 +1,24 @@
-import Image from "next/image";
+import { products } from "@/data/products";
+import ProductCard from "../components/ProductCard"
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            Pawsome Delights
+    <main className="p-6">
+      <h1 className="text-3xl font-bold mb-6">
+        Healthy Treats, Happier Tails 🐶
       </h1>
-    </div>
+
+      <div
+        style={{
+          display: "grid",
+          // gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
+          gap: "24px",
+        }}
+      >
+        {products.map((product) => (
+          <ProductCard key={product.id} product={product} />
+        ))}
+      </div>
+    </main>
   );
 }
