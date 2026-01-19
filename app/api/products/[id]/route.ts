@@ -1,24 +1,21 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { verifyAuth } from "@/lib/auth";
 import { connectDB } from "@/lib/mongodb";
 import Product from "@/models/Product";
 
-type Params = {
-  params: {
-    id: string;
-  };
-};
-
+/**
+ * UPDATE product
+ */
 export async function PUT(
-  req: NextRequest,
-  context: Params
+  req: Request,
+  { params }: any
 ) {
   try {
-    verifyAuth(req);
+    verifyAuth(req as any);
     await connectDB();
 
-    const { id } = context.params;
     const body = await req.json();
+    const { id } = params;
 
     const product = await Product.findByIdAndUpdate(
       id,
@@ -35,15 +32,18 @@ export async function PUT(
   }
 }
 
+/**
+ * DELETE product
+ */
 export async function DELETE(
-  req: NextRequest,
-  context: Params
+  req: Request,
+  { params }: any
 ) {
   try {
-    verifyAuth(req);
+    verifyAuth(req as any);
     await connectDB();
 
-    const { id } = context.params;
+    const { id } = params;
 
     await Product.findByIdAndDelete(id);
 
