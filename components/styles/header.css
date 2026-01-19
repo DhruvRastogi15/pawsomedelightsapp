@@ -1,0 +1,61 @@
+/* ===== TOP ANNOUNCEMENT BAR ===== */
+.top-bar {
+  background-color: #f6f6f6;
+  text-align: center;
+  padding: 8px 0;
+  font-size: 14px;
+}
+
+/* ===== MAIN HEADER ===== */
+.header {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* LOGO */
+.logo {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+/* NAV */
+.nav {
+  display: flex;
+  gap: 24px;
+}
+
+.nav a {
+  text-decoration: none;
+  color: #222;
+  font-size: 15px;
+}
+
+.nav a.active {
+  text-decoration: underline;
+}
+
+/* ICONS */
+.header-icons {
+  display: flex;
+  gap: 16px;
+  font-size: 18px;
+}
+
+/* ===== BOTTOM ANNOUNCEMENT BAR ===== */
+.bottom-bar {
+  background-color: #111;
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
+  font-size: 14px;
+  width: 100%;
+}

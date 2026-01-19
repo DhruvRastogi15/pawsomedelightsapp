@@ -3,16 +3,16 @@ import ProductCard from "../components/ProductCard"
 
 export default function HomePage() {
   return (
-    <main className="p-6">
+    <main className="page">
       <h1 className="text-3xl font-bold mb-6">
         Healthy Treats, Happier Tails 🐶
       </h1>
 
       <div
         style={{
-          display: "grid",
+          // display: "grid",
           // gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
-          gap: "24px",
+          // gap: "24px",
         }}
       >
         {products.map((product) => (

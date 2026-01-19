@@ -7,11 +7,11 @@ export default function ProductCard({ product }: { product: Product }) {
     return (
         <div className="product-card">
             <div className="product-image-wrapper">
-                <img
+                {/* <img
                     src={product.image}
                     alt={product.name}
                     className="product-image"
-                />
+                /> */}
             </div>
 
 
