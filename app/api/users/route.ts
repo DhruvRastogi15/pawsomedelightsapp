@@ -1,45 +1,25 @@
 import { NextResponse } from "next/server";
+import { NextRequest } from "next/server";
+import { verifyAuth } from "@/lib/auth";
 import { connectDB } from "@/lib/mongodb";
 import User from "@/models/User";
 
-/**
- * CREATE USER
- */
-export async function POST(req: Request) {
-  await connectDB();
-  const body = await req.json();
+export async function GET(req: NextRequest) {
+  try {
+    const auth = verifyAuth(req); // 🔥 ONE LINE PROTECTION
 
-  const user = await User.create(body);
-  return NextResponse.json(user, { status: 201 });
-}
+    await connectDB();
 
-/**
- * READ USERS
- */
-export async function GET() {
-  await connectDB();
-  const users = await User.find();
-  return NextResponse.json(users);
-}
+    const users = await User.find();
 
-/**
- * UPDATE USER
- */
-export async function PUT(req: Request) {
-  await connectDB();
-  const { id, ...data } = await req.json();
-
-  await User.findByIdAndUpdate(id, data);
-  return NextResponse.json({ message: "User updated" });
-}
-
-/**
- * DELETE USER
- */
-export async function DELETE(req: Request) {
-  await connectDB();
-  const { id } = await req.json();
-
-  await User.findByIdAndDelete(id);
-  return NextResponse.json({ message: "User deleted" });
+    return NextResponse.json({
+      users,
+      accessType: auth.isGuest ? "guest" : "authenticated",
+    });
+  } catch (error: any) {
+    return NextResponse.json(
+      { message: error.message },
+      { status: 401 }
+    );
+  }
 }
