@@ -3,21 +3,25 @@ import { verifyAuth } from "@/lib/auth";
 import { connectDB } from "@/lib/mongodb";
 import Product from "@/models/Product";
 
-/**
- * UPDATE product
- */
+type Params = {
+  params: {
+    id: string;
+  };
+};
+
 export async function PUT(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  context: Params
 ) {
   try {
     verifyAuth(req);
     await connectDB();
 
+    const { id } = context.params;
     const body = await req.json();
 
     const product = await Product.findByIdAndUpdate(
-      params.id,
+      id,
       body,
       { new: true }
     );
@@ -31,18 +35,17 @@ export async function PUT(
   }
 }
 
-/**
- * DELETE product
- */
 export async function DELETE(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  context: Params
 ) {
   try {
     verifyAuth(req);
     await connectDB();
 
-    await Product.findByIdAndDelete(params.id);
+    const { id } = context.params;
+
+    await Product.findByIdAndDelete(id);
 
     return NextResponse.json({ message: "Product deleted" });
   } catch (error: any) {
