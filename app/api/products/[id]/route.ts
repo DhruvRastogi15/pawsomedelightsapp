@@ -8,16 +8,18 @@ import Product from "@/models/Product";
  */
 export async function PUT(
   req: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     verifyAuth(req as any);
     await connectDB();
 
+    const { id } = await params;   // 👈 IMPORTANT
+
     const body = await req.json();
 
     const product = await Product.findByIdAndUpdate(
-      params.id,
+      id,
       { $set: body },
       { new: true }
     );
@@ -36,13 +38,13 @@ export async function PUT(
  */
 export async function DELETE(
   req: Request,
-  { params }: any
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     verifyAuth(req as any);
     await connectDB();
 
-    const { id } = params;
+    const { id } = await params;
 
     await Product.findByIdAndDelete(id);
 
@@ -54,3 +56,4 @@ export async function DELETE(
     );
   }
 }
+
