@@ -36,11 +36,15 @@ export async function POST(req: Request) {
       imageUrl: uploadResult.secure_url,
     });
 
-  } catch (err) {
-    console.error("UPLOAD ERROR:", err);
-    return NextResponse.json(
-      { message: "Upload failed" },
-      { status: 500 }
-    );
-  }
+  } catch (err: any) {
+  console.error("UPLOAD ERROR FULL:", err);
+
+  return NextResponse.json(
+    {
+      message: "Upload failed",
+      error: err?.message || err,
+    },
+    { status: 500 }
+  );
+}
 }
