@@ -6,7 +6,7 @@ const ProductSchema = new Schema(
     slug: { type: String, required: true, unique: true },
     price: { type: Number, required: true },
     discountedPrice: { type: Number, required: true },
-    image: { type: String, required: true },
+    imageUrl: { type: String, required: true },
     description: { type: String, required: true },
   },
   { timestamps: true }
