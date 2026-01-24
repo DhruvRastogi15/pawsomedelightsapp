@@ -21,30 +21,38 @@ export async function POST(req: Request) {
       );
     }
 
+    const filename =
+      (formData.get("filename") as string) ||
+      file.name.replace(/\.[^/.]+$/, "");
+
     const buffer = Buffer.from(await file.arrayBuffer());
 
     const uploadResult: any = await new Promise((resolve, reject) => {
       cloudinary.uploader
-        .upload_stream({ folder: "products" }, (err, result) => {
-          if (err) reject(err);
-          resolve(result);
-        })
+        .upload_stream(
+          {
+            folder: "products",
+            public_id: filename,
+            overwrite: true,
+          },
+          (err, result) => {
+            if (err) reject(err);
+            resolve(result);
+          }
+        )
         .end(buffer);
     });
 
     return NextResponse.json({
       imageUrl: uploadResult.secure_url,
+      filename: uploadResult.public_id,
     });
 
   } catch (err: any) {
-  console.error("UPLOAD ERROR FULL:", err);
-
-  return NextResponse.json(
-    {
-      message: "Upload failed",
-      error: err?.message || err,
-    },
-    { status: 500 }
-  );
-}
+    console.error("UPLOAD ERROR:", err);
+    return NextResponse.json(
+      { message: "Upload failed", error: err?.message || err },
+      { status: 500 }
+    );
+  }
 }
