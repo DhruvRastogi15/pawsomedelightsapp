@@ -3,7 +3,7 @@ export type Product = {
   name: string;
   slug: string;
   price: number;
-  image: string;
+  imageUrl: string;
   description: string;
 };
 
@@ -13,7 +13,7 @@ export const products: Product[] = [
     name: "Banana Crunchies",
     slug: "banana-crunchies",
     price: 230,
-    image: "/products/BananaCrunchies.jpg",
+    imageUrl: "/products/BananaCrunchies.jpg",
     description: "Healthy homemade peanut butter treats for dogs.",
   },
   {
@@ -21,7 +21,7 @@ export const products: Product[] = [
     name: "Chicken Superblend Topper",
     slug: "chicken-superblend-topper",
     price: 250,
-    image: "/products/chickenSuperblendTopper.jpg",
+    imageUrl: "/products/chickenSuperblendTopper.jpg",
     description: "Oatmeal and banana baked treats.",
   },
   {
@@ -29,7 +29,7 @@ export const products: Product[] = [
     name: "Chicken and Carrot Crunchies",
     slug: "chicken-carrot-crunchies",
     price: 230,
-    image: "/products/chickenSuperblendTopper.jpg",
+    imageUrl: "/products/chickenSuperblendTopper.jpg",
     description: "Oatmeal and banana baked treats.",
   },
   {
@@ -37,7 +37,7 @@ export const products: Product[] = [
     name: "Chicken and Sweet Potato Crunchies",
     slug: "chicken-sweet-potato-crunchies",
     price: 299,
-    image: "/products/chickenSuperblendTopper.jpg",
+    imageUrl: "/products/chickenSuperblendTopper.jpg",
     description: "Oatmeal and banana baked treats.",
   },
   {
@@ -45,7 +45,7 @@ export const products: Product[] = [
     name: "Complete Nutrition Pack",
     slug: "complete-nutrition-pack",
     price: 649,
-    image: "/products/chickenSuperblendTopper.jpg",
+    imageUrl: "/products/chickenSuperblendTopper.jpg",
     description: "Oatmeal and banana baked treats.",
   },
   {
@@ -53,7 +53,7 @@ export const products: Product[] = [
     name: "Crunchies Duo Pack",
     slug: "chicken-superblend-topper",
     price: 349,
-    image: "/products/chickenSuperblendTopper.jpg",
+    imageUrl: "/products/chickenSuperblendTopper.jpg",
     description: "Oatmeal and banana baked treats.",
   },
   {
@@ -61,7 +61,7 @@ export const products: Product[] = [
     name: "Starter Trial Pack",
     slug: "starter-trial-pack",
     price: 299,
-    image: "/products/chickenSuperblendTopper.jpg",
+    imageUrl: "/products/chickenSuperblendTopper.jpg",
     description: "Oatmeal and banana baked treats.",
   },
 ];

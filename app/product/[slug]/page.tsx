@@ -12,7 +12,7 @@ export default function ProductPage({
   return (
     <div className="p-6 grid md:grid-cols-2 gap-8">
       <img
-        src={product.image}
+        src={product.imageUrl}
         alt={product.name}
         className="rounded"
       />
