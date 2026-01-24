@@ -1,3 +1,5 @@
+export const runtime = "nodejs";
+
 import { NextResponse } from "next/server";
 import { v2 as cloudinary } from "cloudinary";
 
@@ -34,7 +36,7 @@ export async function POST(req: Request) {
       imageUrl: uploadResult.secure_url,
     });
 
-  } catch (err: any) {
+  } catch (err) {
     console.error("UPLOAD ERROR:", err);
     return NextResponse.json(
       { message: "Upload failed" },
