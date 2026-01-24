@@ -8,18 +8,17 @@ import Product from "@/models/Product";
  */
 export async function PUT(
   req: Request,
-  { params }: any
+  { params }: { params: { id: string } }
 ) {
   try {
     verifyAuth(req as any);
     await connectDB();
 
     const body = await req.json();
-    const { id } = params;
 
     const product = await Product.findByIdAndUpdate(
-      id,
-      body,
+      params.id,
+      { $set: body },
       { new: true }
     );
 
