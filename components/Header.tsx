@@ -12,9 +12,13 @@ export default function Header() {
         left: 0,
         right: 0,
         zIndex: 2400,
+        backgroundColor: '#fff',
+        color: '#000',
+        boxShadow: '0 4px 12px rgba(0, 0, 0, 0.12)',
+        height:'150px'
       }}
     >
-      <Toolbar>
+      <Toolbar disableGutters>
         <div className="header">
           <Box className="top-bar">
             One Bowl At A Time - Feeding Strays With Every Order →

@@ -11,11 +11,12 @@
   display: flex;
   align-items: center;
   /* padding: 0 16px; */
-  /* margin-bottom: 100px; */
+  margin-bottom: 100px;
   flex-direction: column;
   box-shadow: inset;
   align-items: center;
   justify-content: center;
+  box-shadow: '0 2px 10px rgba(0,0,0,0.08)';
 }
 
 /* ===== TOP ANNOUNCEMENT BAR ===== */
@@ -31,6 +32,7 @@
 /* ===== MAIN HEADER ===== */
 .header2 {
   border-bottom: 1px solid #e5e5e5;
+  background: #fff; 
 }
 
 .header-inner {

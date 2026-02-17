@@ -2,8 +2,6 @@ import { products } from "@/data/products";
 import ProductCard from "../components/ProductCard"
 import Grid from '@mui/material/Grid';
 
-
-
 export default function HomePage() {
   return (
     <main style={{ marginTop: '100px' }}>
@@ -12,15 +10,19 @@ export default function HomePage() {
           Healthy Treats, Happier Tails 🐶
         </h1>
 
-        <Grid spacing={{ xs: 2, sm: 3, md: 4 }}>
+        <Grid
+        container
+          spacing={{ xs: 2, sm: 3, md: 4 }}
+          columns={{ xs: 12, sm: 12, md: 12, lg: 12 }}
+        >
           {products.map((product) => (
             <Grid
               key={product.id}
               size={{
-                xs: 12, // mobile → 1 card
-                sm: 6,  // tablet → 2 cards
-                md: 4,  // laptop → 3 cards
-                lg: 3,  // desktop → 4 cards
+                xs: 12,
+                sm: 6,
+                md: 4,
+                lg: 3,
               }}
             >
               <ProductCard product={product} />
