@@ -16,9 +16,7 @@ export default function ProductCard({ product }: { product: Product }) {
             </div>
 
 
-            <h2 className="mt-3 font-semibold">abc
-                {/* {product.name} */}
-                </h2>
+            <h2 className="mt-3 font-semibold">{product.name}</h2>
             <p className="text-gray-600">₹{product.price}</p>
 
             <Link
