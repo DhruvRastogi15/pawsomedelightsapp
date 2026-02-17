@@ -1,8 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter';
-
-
+import Toolbar from "@mui/material/Toolbar";
 
 export default function RootLayout({
   children,
@@ -13,6 +12,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Header />
+         <Toolbar />
         <AppRouterCacheProvider>
           {children}
         </AppRouterCacheProvider>
@@ -21,3 +21,7 @@ export default function RootLayout({
     </html>
   );
 }
+
+export const metadata = {
+  viewport: 'width=device-width, initial-scale=1, viewport-fit=cover',
+};

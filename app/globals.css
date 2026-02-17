@@ -26,3 +26,16 @@ html,
   margin: 0 auto;
   padding: 0 24px;
 }
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overscroll-behavior: none; /* 🔑 stops rubber-band effect */
+  -webkit-overflow-scrolling: auto;
+}
+
+body {
+  position: relative;
+}
