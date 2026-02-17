@@ -7,15 +7,18 @@ export default function ProductCard({ product }: { product: Product }) {
     return (
         <div className="product-card">
             <div className="product-image-wrapper">
-                {/* <img
-                    src={product.image}
+                <img
+                    style={{height:'200px',width:'200px'}}
+                    src={product.imageUrl}
                     alt={product.name}
                     className="product-image"
-                /> */}
+                />
             </div>
 
 
-            <h2 className="mt-3 font-semibold">{product.name}</h2>
+            <h2 className="mt-3 font-semibold">abc
+                {/* {product.name} */}
+                </h2>
             <p className="text-gray-600">₹{product.price}</p>
 
             <Link
