@@ -3,6 +3,8 @@
 import ProductCard from "../components/ProductCard";
 import Grid from "@mui/material/Grid";
 import { useEffect, useState } from "react";
+import CircularProgress from "@mui/material/CircularProgress";
+import Box from "@mui/material/Box";
 
 export interface Product {
   _id: string;
@@ -19,6 +21,7 @@ export default function HomePage() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
+        setLoading(true)
         const res = await fetch("/api/products", {
           method: "GET",
           headers: {
@@ -32,8 +35,10 @@ export default function HomePage() {
 
         const products = await res.json();
         setData(products);
+        setLoading(false)
       } catch (error) {
         console.error("Error:", error);
+        setLoading(false)
       } finally {
         setLoading(false);
       }
@@ -42,7 +47,20 @@ export default function HomePage() {
     fetchProducts();
   }, []);
 
-  if (loading) return <p>Loading products...</p>;
+if (loading) {
+  return (
+    <Box
+      sx={{
+        height: "80vh",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <CircularProgress size={60} />
+    </Box>
+  );
+}
 
   return (
     <main style={{ marginTop: '100px' }}>
