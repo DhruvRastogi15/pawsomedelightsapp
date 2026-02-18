@@ -4,11 +4,11 @@ import Link from "next/link";
 // import { Product } from "@/data/products";
 import { useProductStore } from "@/store/useProductStore";
 import { useRouter } from "next/navigation";
-import { Product } from "@/types/product";
+// import { Product } from "@/types/product";
 
 
 
-export default function ProductCard({ product }: { product: Product }) {
+export default function ProductCard({ product }: { product: any }) {
       const router = useRouter();
 
       const setProduct = useProductStore((s) => s.setProduct);

@@ -3,7 +3,7 @@ import { NextRequest } from "next/server";
 
 export function verifyAuth(req: NextRequest) {
   const guestUser =
-    req.headers.get("guest-user") === "true";  // ✅ FIXED
+    req.headers.get("guestuser") === "true"; // 👈 lowercase
 
   if (guestUser) {
     return { guestUser: true };

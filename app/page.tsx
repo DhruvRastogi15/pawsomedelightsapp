@@ -1,33 +1,28 @@
 "use client";
-// import { products } from "@/data/products";
-import ProductCard from "../components/ProductCard"
-import Grid from '@mui/material/Grid';
-import AuthModal from "@/components/AuthModal";
-import { useEffect, useState } from "react";
-import { Product } from "@/types/product";
 
-// export interface Product {
-//   _id: string;
-//   name: string;
-//   price: number;
-//   imageUrl: string;
-//   slug: string;
-// }
+import ProductCard from "../components/ProductCard";
+import Grid from "@mui/material/Grid";
+import { useEffect, useState } from "react";
+
+export interface Product {
+  _id: string;
+  name: string;
+  price: number;
+  imageUrl: string;
+  slug: string;
+}
 
 export default function HomePage() {
-    const [open, setOpen] = useState(false);
-    const [loading, setLoading] = useState(true);
+  const [data, setData] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
 
-    const [products, setProducts] = useState<Product[]>([]);
-
-
-useEffect(() => {
+  useEffect(() => {
     const fetchProducts = async () => {
       try {
         const res = await fetch("/api/products", {
           method: "GET",
           headers: {
-            "guest-user": "true",  // ✅ MUST match backend exactly
+            guestUser: "true",
           },
         });
 
@@ -35,8 +30,8 @@ useEffect(() => {
           throw new Error("Failed to fetch products");
         }
 
-        const data = await res.json();
-        setProducts(data);
+        const products = await res.json();
+        setData(products);
       } catch (error) {
         console.error("Error:", error);
       } finally {
@@ -46,6 +41,8 @@ useEffect(() => {
 
     fetchProducts();
   }, []);
+
+  if (loading) return <p>Loading products...</p>;
 
   return (
     <main style={{ marginTop: '100px' }}>
@@ -59,7 +56,7 @@ useEffect(() => {
           spacing={{ xs: 2, sm: 3, md: 4 }}
           columns={{ xs: 12, sm: 12, md: 12, lg: 12 }}
         >
-          {products.map((product) => (
+          {data.map((product) => (
             <Grid
               key={product._id}
               size={{
