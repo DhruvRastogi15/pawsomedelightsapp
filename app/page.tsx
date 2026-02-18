@@ -4,13 +4,21 @@ import ProductCard from "../components/ProductCard"
 import Grid from '@mui/material/Grid';
 import AuthModal from "@/components/AuthModal";
 import { useEffect, useState } from "react";
+import { Product } from "@/types/product";
 
+// export interface Product {
+//   _id: string;
+//   name: string;
+//   price: number;
+//   imageUrl: string;
+//   slug: string;
+// }
 
 export default function HomePage() {
     const [open, setOpen] = useState(false);
     const [loading, setLoading] = useState(true);
 
-    const [products, setProducts] = useState([]);
+    const [products, setProducts] = useState<Product[]>([]);
 
 
 useEffect(() => {

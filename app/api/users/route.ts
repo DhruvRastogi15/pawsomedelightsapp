@@ -14,7 +14,7 @@ export async function GET(req: NextRequest) {
 
     return NextResponse.json({
       users,
-      accessType: auth.isGuest ? "guest" : "authenticated",
+      accessType: auth.guestUser ? "guest" : "authenticated",
     });
   } catch (error: any) {
     return NextResponse.json(

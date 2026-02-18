@@ -1,9 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { Product } from "@/data/products";
+// import { Product } from "@/data/products";
 import { useProductStore } from "@/store/useProductStore";
 import { useRouter } from "next/navigation";
+import { Product } from "@/types/product";
+
 
 
 export default function ProductCard({ product }: { product: Product }) {
