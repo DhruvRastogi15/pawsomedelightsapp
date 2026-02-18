@@ -2,6 +2,9 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter';
 import Toolbar from "@mui/material/Toolbar";
+import Navbar from "../components/Navbar"
+// "@/components/Navbar";
+
 
 export default function RootLayout({
   children,
@@ -11,10 +14,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        
         <Header />
          <Toolbar />
         <AppRouterCacheProvider>
+          
           {children}
+          <Navbar />
         </AppRouterCacheProvider>
         <Footer />
       </body>

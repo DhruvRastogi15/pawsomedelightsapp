@@ -1,8 +1,19 @@
+"use client";
 import { products } from "@/data/products";
 import ProductCard from "../components/ProductCard"
 import Grid from '@mui/material/Grid';
+import AuthModal from "@/components/AuthModal";
+import { useEffect, useState } from "react";
+
 
 export default function HomePage() {
+    const [open, setOpen] = useState(false);
+
+    useEffect(() => {
+      // alert('a')
+  setOpen(true);
+}, []);
+
   return (
     <main style={{ marginTop: '100px' }}>
       <div>
@@ -24,6 +35,14 @@ export default function HomePage() {
                 md: 4,
                 lg: 3,
               }}
+              sx={{
+                backgroundColor: "#f5f5f5",
+                padding: 2,
+                borderRadius: 2,
+                boxShadow: 3
+              }}
+              display="flex"
+              justifyContent="center"   // ✅ centers card
             >
               <ProductCard product={product} />
             </Grid>

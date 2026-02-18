@@ -2,8 +2,12 @@
   border: 1px solid #e5e5e5;
   border-radius: 8px;
   padding: 16px;
-  width: 280px;          /* prevents full-page stretch */
+  width: 280px;
   box-sizing: border-box;
+  align-items: center;     /* ✅ center horizontally */
+  text-align: center;      /* ✅ center text */
+
+
 }
 
 /* Square image container */
@@ -13,12 +17,18 @@
   overflow: hidden;
   border-radius: 8px;
   background-color: #f5f5f5;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Actual image */
 .product-image {
   width: '10px';
   height: '10px';
+  object-fit: contain;   /* ✅ keeps product centered */
+
   /* object-fit: cover;     fills square properly */
   /* display: block;        prevents inline img bugs */
 }

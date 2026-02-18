@@ -8,7 +8,7 @@ export default function ProductCard({ product }: { product: Product }) {
         <div className="product-card">
             <div className="product-image-wrapper">
                 <img
-                    style={{height:'200px',width:'200px'}}
+                    style={{height:'100%',width:'100%',borderRadius:'15px'}}
                     src={product.imageUrl}
                     alt={product.name}
                     className="product-image"
