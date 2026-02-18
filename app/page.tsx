@@ -1,5 +1,5 @@
 "use client";
-import { products } from "@/data/products";
+// import { products } from "@/data/products";
 import ProductCard from "../components/ProductCard"
 import Grid from '@mui/material/Grid';
 import AuthModal from "@/components/AuthModal";
@@ -8,11 +8,36 @@ import { useEffect, useState } from "react";
 
 export default function HomePage() {
     const [open, setOpen] = useState(false);
+    const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-      // alert('a')
-  setOpen(true);
-}, []);
+    const [products, setProducts] = useState([]);
+
+
+useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const res = await fetch("/api/products", {
+          method: "GET",
+          headers: {
+            "guest-user": "true",  // ✅ MUST match backend exactly
+          },
+        });
+
+        if (!res.ok) {
+          throw new Error("Failed to fetch products");
+        }
+
+        const data = await res.json();
+        setProducts(data);
+      } catch (error) {
+        console.error("Error:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, []);
 
   return (
     <main style={{ marginTop: '100px' }}>
@@ -28,7 +53,7 @@ export default function HomePage() {
         >
           {products.map((product) => (
             <Grid
-              key={product.id}
+              key={product._id}
               size={{
                 xs: 12,
                 sm: 6,
