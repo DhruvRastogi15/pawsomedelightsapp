@@ -2,6 +2,7 @@
 
 import { products } from "@/data/products";
 import { useProductStore } from "@/store/useProductStore";
+import "./page.css"
 
 
 export default function ProductPage({
@@ -20,28 +21,30 @@ export default function ProductPage({
   // const productDetails = searchParams
 
   console.log('productDetails are',productDetails)
-
-  // if (!product) return <p>Product not found</p>;
+  const discountPercentage = Math.round(
+  ((productDetails?.price - productDetails?.discountedPrice) / productDetails?.price) * 100
+);
 
   return (
-    <div style={{marginTop:'200px'}}
-    //  className="p-6 grid md:grid-cols-2 gap-8"
-     >
+    <div style={{marginTop:'100px'}}>
+      <h1 className="text-3xl font-bold">{productDetails?.name}</h1>
       <img
         src={productDetails?.imageUrl}
         alt={productDetails?.name}
         className="rounded"
-        style={{height:'200px',width:'200px'}}
+        style={{height:'100%',width:'100%'}}
       />
-
-      <div>
-        <h1 className="text-3xl font-bold">{productDetails?.name}</h1>
-        <p className="mt-3 text-gray-700">{productDetails?.description}</p>
-        <p className="mt-4 text-xl font-semibold">₹{productDetails?.price}</p>
-
-        <button className="mt-6 bg-black text-white px-6 py-3 rounded">
-          Add to Cart
-        </button>
+      <div style={{display:'flex',width:'100%',justifyContent:'space-between'}}>
+        <div className="price-container">
+        <span className="discount-price">₹{productDetails?.discountedPrice}</span>
+        <span className="original-price">₹{productDetails?.price}</span>
+        </div>
+        <button className="add-cart-btn">🛒    Add to Cart</button>
+        </div>
+        <span className="discount-badge">{discountPercentage}%</span>
+      <div style={{marginTop:'10px'}}>
+        <div dangerouslySetInnerHTML={{ __html: productDetails?.description }}/>
+        
       </div>
     </div>
   );

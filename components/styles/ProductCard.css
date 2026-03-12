@@ -3,7 +3,7 @@
   border-radius: 8px;
   padding: 16px;
   width: 280px;
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
   align-items: center;     /* ✅ center horizontally */
   text-align: center;      /* ✅ center text */
 
@@ -40,4 +40,40 @@
 
 .product-price {
   color: #555;
+}
+
+.view-product-btn {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #ff6a00, #ff3d00);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  margin-top: 20px;
+}
+
+.view-product-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+}
+
+.view-product-btn:active {
+  transform: scale(0.96);
+}
+
+.original-price {
+  color: #e63946;
+  text-decoration: line-through;
+  font-size: 16px;
+  margin-left: 10px;
+}
+
+.discount-price {
+  color: #888;
+  font-size: 20px;
+  font-weight: bold;
+  
 }
